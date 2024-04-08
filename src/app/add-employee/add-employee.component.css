@@ -1,0 +1,12 @@
+.hide-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scroll::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+.hide-overlayer::backdrop {
+    background-color: transparent;
+    /* z-index: -10;     */
+}

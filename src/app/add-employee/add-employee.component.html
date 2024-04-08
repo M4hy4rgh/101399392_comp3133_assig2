@@ -1,0 +1,120 @@
+<main class="hero min-h-screen  bg-back2 bg-center bg-cover relative">
+    <div class="hero-overlay bg-opacity-60"></div>
+
+    @if (error) {
+    <div class=" w-full h-screen z-50 flex justify-center" id="err">
+        <div class="bg-black opacity-60 w-full h-screen z-50"></div>
+        <div class="flex justify-center items-center absolute z-50 mt-4 ">
+            <div class="bg-red-700 text-white p-3 rounded-lg">
+                <div class="flex flex-row justify-evenly items-center py-2 space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{error}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+    @if (loading) {
+
+    <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+        <!-- <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div> -->
+        <span class="loading loading-spinner loading-lg scale-125"></span>
+    </div>
+
+    }
+
+    <!-- <div class="flex flex-col "> -->
+    <!-- <div class="hero-overlay bg-opacity-60"></div> -->
+    <!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
+
+    <!-- <dialog #modalDialog id="my_modal_3" [class]="!error ? 'modal' : 'modal hide-overlayer' "> -->
+    <!-- <div class="modal-box space-y-2 w-2/3 hide-scroll"> -->
+    <div class="card bg-base-100 shadow-xl space-y-2 w-2/3 h-3/4 
+                lg:w-[450px] lg:h-4/6 min-h-[550px] max-h-[600px] lg:min-h-[450px] lg:max-h-[4500px]
+                relative">
+
+        <div class="overflow-auto lg:overflow-hidden w-full h-full">
+
+        <div class=" min-h-54 py-5 px-5">
+            <div class="absolute flex justify-start items-center -top-12 -left-8 lg:-top-[80px] lg:-left-11 z-10">
+                <a class="btn btn-circle btn-ghost text-black" (click)="back()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                    </svg>
+                </a>
+            </div>
+            <div class="flex flex-row justify-between items-center h-full">
+                <h2 class="text-lg font-bold">Add Employee</h2>
+                <!-- <form method="dialog">
+                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form> -->
+            </div>
+            <div class="divider divider-neutral my-0"></div>
+        </div>
+
+        <div class=" px-10 h-full">
+            <form class="space-y-2" [formGroup]="employee_form" (ngSubmit)="onsubmit()">
+                <div class="join join-vertical lg:join-horizontal flex justify-center items-center space-y-2 lg:space-y-0">
+                    <label class="form-control w-full ">
+                        <div class="label">
+                            <span class="label-text">First Name
+                            </span>
+                        </div>
+                        <input type="text" placeholder="Type here" formControlName="first_name" class="grow input input-bordered w-full
+                                lg:rounded-r-none rounded-r-lg" />
+                    </label>
+                    <label class="form-control w-full ">
+                        <div class="label">
+                            <span class="label-text">Last Name
+                            </span>
+                        </div>
+                        <input type="text" placeholder="Type here" formControlName="last_name" class="grow input input-bordered w-full
+                                lg:rounded-l-none rounded-l-lg" />
+                    </label>
+                </div>
+                <label class="form-control w-full  ">
+                    <div class="label">
+                        <span class="label-text">Email Address </span>
+                    </div>
+                    <input type="email" placeholder="Type here" formControlName="email"
+                        class=" grow input input-bordered w-full " />
+                </label>
+                <div class="join join-vertical lg:join-horizontal flex justify-center items-center space-y-2 lg:space-y-0">
+                    <label class="form-control w-full  ">
+                        <div class="label">
+                            <span class="label-text">Gender</span>
+                        </div>
+                        <select formControlName="gender" class="select select-bordered  lg:rounded-r-none rounded-r-lg ">
+                            <option disabled selected>Pick one</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </label>
+                    <label class="form-control w-full ">
+                        <div class="label">
+                            <span class="label-text">Salary</span>
+                        </div>
+                        <input type="text" placeholder="0" formControlName="salary" class="grow input input-bordered w-full
+                                lg:rounded-l-none rounded-l-lg" />
+                    </label>
+                </div>
+                <div class="form-control w-full ">
+                    <button class="btn btn-primary w-full mt-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <form method="dialog" class="modal-backdrop w-full">
+                <button>close</button>
+            </form> -->
+    <!-- </dialog> -->
+    </div>
+</main>

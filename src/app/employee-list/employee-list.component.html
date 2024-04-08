@@ -1,0 +1,88 @@
+<main>
+    <!-- @if (loading) {
+        <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+            <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+            <span class="loading loading-spinner loading-lg scale-125"></span>
+        </div>
+    } -->
+    <div class="hero min-h-screen bg-back2 bg-center bg-cover relative">
+        <div class="hero-overlay bg-opacity-60"></div>
+
+        <div class="card lg:card-side bg-base-100 shadow-xl w-2/3 h-2/3 min-h-2/3 max-h-2/3 overflow-hidden">
+            <div class="overflow-auto w-full">
+                <table class="table">
+                    <thead class="sticky top-0 bg-base-200 z-10 shadow-md ">
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox selectAll" name="checkbox-all"
+                                        (change)="selectAllCheckbox($event)" />
+                                </label>
+                            </th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Salary</th>
+                            <th class="pl-14 space-x-2">
+                                <button class="btn btn-neutral btn-sm" [routerLink]="['/add-employee']">Add
+                                    Employee</button>
+                                <button class="btn btn-sm bg-red-600 hover:bg-red-800"
+                                    [disabled]="!anyCheckboxChecked"
+                                    (click)="deleteSelectedItems()">Delete</button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (loading) {
+                        <div class="w-full absolute flex py-20 justify-center items-center self-center">
+                            <span class="loading loading-bars w-14 "></span>
+                        </div>
+                        } @else {
+                        @for (item of data; track $index) {
+                        <tr id="{{item._id}}">
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox" name="checkbox"
+                                        (change)="selectCheckbox($event, item._id)" value="{{item._id}}" />
+
+                                </label>
+                            </th>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                                                alt="avatar" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">{{item.first_name}} {{item.last_name}}</div>
+                                        <!-- <div class="text-sm opacity-50">{{item.last_name}}</div> -->
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                {{item.email.indexOf('@') > 0 ? item.email.split('@')[0].concat("....") : item.email}}
+                                <!-- <br /> -->
+                                <!-- <span class="badge badge-ghost badge-sm">Desktop Support Technician</span> -->
+                            </td>
+                            <td>.......</td>
+                            <td>$.......</td>
+                            <!-- <td></td> -->
+                            <th class="pl-0">
+                                <div class="flex justify-center items-end">
+                                    <button class="btn btn-ghost btn-sm"
+                                        [routerLink]="['/employee-detail', item._id]">Details</button>
+                                    <button class="btn btn-ghost btn-sm"
+                                        [routerLink]="['/update-employee', item._id]">Update</button>
+                                </div>
+                            </th>
+                        </tr>
+                        }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
