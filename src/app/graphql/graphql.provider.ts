@@ -3,7 +3,7 @@ import { HttpLink } from 'apollo-angular/http';
 import { ApplicationConfig, inject } from '@angular/core';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 
-const uri = 'http://localhost:4000/graphql';
+const uri = 'https://101399392-comp-3133-assignment1.vercel.app/graphql';
 
 export function createApollo(): ApolloClientOptions<any> {
     const httpLink = inject(HttpLink);
